@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function ram_total {
+    total_b=$(free -b | grep Mem | awk '{print $2}')
+    total_gb=$(echo "scale=3; $total_b / 1024 / 1024 / 1024" | bc)
+    total=$(printf "%0.3f" "$total_gb")
+    echo "$total"
+}
+
+function ram_used {
+    used_b=$(free -b | grep Mem | awk '{print $3}')
+    used_gb=$(echo "scale=3; $used_b / 1024 / 1024 / 1024" | bc)
+    used=$(printf "%0.3f" "$used_gb")
+    echo "$used"
+}
+
+function ram_free {
+    free_b=$(free -b | grep Mem | awk '{print $4}')
+    free_gb=$(echo "scale=3; $free_b / 1024 / 1024 / 1024" | bc)
+    free=$(printf "%0.3f" "$free_gb")
+    echo "$free"
+}

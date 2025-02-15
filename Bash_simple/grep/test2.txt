@@ -1,0 +1,19 @@
+asdfa
+
+asefa
+a
+adf
+
+Hello, World!   # Простая строка
+
+	Tabbed line    # Строка с табуляцией
+
+Line with spaces:     This line has multiple spaces.
+Line with nonprintable: \x01\x02\x03\x7F    # Здесь содержатся непечатаемые символы.
+
+Line with newline at the end
+Another line
+Yet another line
+
+Line with mixed special chars: !@#$%^&*()-=_+[]{};':",.<>?/`~
+

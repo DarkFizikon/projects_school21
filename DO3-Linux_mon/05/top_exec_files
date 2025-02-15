@@ -1,0 +1,14 @@
+#!/bin/bash
+
+dir=$1
+
+function top_exec_files {
+    count=1
+    find "$dir" -type f -executable -exec du -sh {} \; |
+    sort -hr | head -n10 |
+    while IFS=$'\t' read -r size path; do
+        md5=$(md5sum "$path" | awk '{print $1}')
+        echo "$count - $path, $size, $md5"
+        ((count++))
+    done
+}

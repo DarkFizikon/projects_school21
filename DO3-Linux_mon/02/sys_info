@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function host {
+    hostname
+}
+
+function time_and_zone {
+    timezone=$(cat /etc/timezone)
+    change=$(date +%z | tr -d '(),0')
+    echo "$timezone" UTC "$change"
+}
+
+function username {
+    whoami
+}
+
+function OS {
+    hostnamectl | grep "Operating System" | awk '{print $3, $4, $5}'
+}
+
+function DATE {
+   date +'%d %B %Y %X'
+}
+
+function timeUP {
+    uptime -p
+}
+
+function up_sec {
+    date_sec=$(date +%s)
+    uptime_sec=$(date -d "$(uptime -s)" +%s)
+    seconds=$(($date_sec - $uptime_sec))
+    echo "$seconds"    
+}

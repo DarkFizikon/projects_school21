@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function root {
+    df -BK / | awk 'NR==2 {printf "%.2f", (($2/1024))}'
+}
+
+function root_used {
+    df -BK / | awk 'NR==2 {printf "%.2f", (($3/1024))}'
+}
+
+function root_free {
+    df -BK / | awk 'NR==2 {printf "%.2f", (($4/1024))}'
+}

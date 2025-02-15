@@ -1,0 +1,19 @@
+#!/bin/bash
+function dir_check {
+    if [ $# -ne 1 ]; then
+        echo "Error! You should enter one parameter path to dir (example /var/lib/)"
+        exit 1
+    fi
+
+    dir=$1
+
+    if [[ "$dir" != */ ]]; then
+        echo "Error! Directory path must end with / (example /var/lib/)"
+        exit 1
+    fi
+
+    if [ ! -d "$dir" ]; then
+        echo "Error! Directory doesn't exist!"
+        exit 1
+    fi
+}

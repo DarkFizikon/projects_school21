@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function find_ip {
+    ip=$(ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v '127.0.0.1' | head -n 1)
+    if [ -z "$ip" ]; then
+        ip=$(ip -4 addr show | grep '(?<=inet\s)\d+(\.\d+){3}')
+    fi
+    echo "$ip"
+}
+
+function find_mask {
+   ifconfig | grep $(find_ip) | awk '{print $4}'
+}
+
+function find_gateway {
+    gate=$(ip r | grep 'default via' | awk '{print $3}')
+    if [ -z "$gate" ]; then
+        echo "No gateway"
+    else
+        echo "$gate"
+    fi
+}

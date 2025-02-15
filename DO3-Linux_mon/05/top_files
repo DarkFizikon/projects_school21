@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dir=$1
+
+function top_files {
+    count=1
+    find "$dir" -type f -exec du -sh {} \; |
+    sort -hr | head -n10 |
+    while IFS=$'\t' read -r size path; do
+        filename=$(basename "$path")
+        extension="${filename##*.}"
+        if [[ "$filename" != "$extension" ]]; then
+            type="$extension"
+        else
+            type="unknown"
+        fi   
+        echo "$count - $path, $size, $type"
+        ((count++))
+    done
+}

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+function screen {
+    hostname=$(host)
+timezone=$(time_and_zone)
+user=$(username)
+os=$(OS)
+date=$(DATE)
+uptime=$(timeUP)
+uptime_sec=$(up_sec)
+ip=$(find_ip)
+mask=$(find_mask)
+gateway=$(find_gateway)
+total=$(ram_total)
+used=$(ram_used)
+free=$(ram_free)
+space_root=$(root)
+space_root_used=$(root_used)
+space_root_free=$(root_free)
+
+echo "HOSTNAME = $hostname
+TIMEZONE = $timezone
+USER = $user
+OS = $os
+DATE = $date
+UPTIME = $uptime
+UPTIME_SEC = $uptime_sec seconds
+IP = $ip
+MASK = $mask
+GATEWAY = $gateway
+RAM_TOTAL = $total GB
+RAM_USED = $used GB
+RAM_FREE = $free GB
+SPACE_ROOT = $space_root MB
+SPACE_ROOT_USED = $space_root_used MB
+SPACE_ROOT_FREE = $space_root_free MB"
+}

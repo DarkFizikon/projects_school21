@@ -1,0 +1,38 @@
+#!/bin/bash
+
+function screen {
+    hostname=$(host)
+    timezone=$(time_and_zone)
+    user=$(username)
+    os=$(OS)
+    date=$(DATE)
+    uptime=$(timeUP)
+    uptime_sec=$(up_sec)
+    ip=$(find_ip)
+    mask=$(find_mask)
+    gateway=$(find_gateway)
+    total=$(ram_total)
+    used=$(ram_used)
+    free=$(ram_free)
+    space_root=$(root)
+    space_root_used=$(root_used)
+    space_root_free=$(root_free)
+
+    echo -e "\e[${bg_name_color};${text_name_color}mHOSTNAME\e[0m = \e[${bg_value_color};${text_value_color}m$hostname\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mTIMEZONE\e[0m = \e[${bg_value_color};${text_value_color}m$timezone\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mUSER\e[0m = \e[${bg_value_color};${text_value_color}m$user\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mOS\e[0m = \e[${bg_value_color};${text_value_color}m$os\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mDATE\e[0m = \e[${bg_value_color};${text_value_color}m$date\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mUPTIME\e[0m = \e[${bg_value_color};${text_value_color}m$uptime\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mUPTIME_SEC\e[0m = \e[${bg_value_color};${text_value_color}m$uptime_sec seconds\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mIP\e[0m = \e[${bg_value_color};${text_value_color}m$ip\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mMASK\e[0m = \e[${bg_value_color};${text_value_color}m$mask\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mGATEWAY\e[0m = \e[${bg_value_color};${text_value_color}m$gateway\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mRAM_TOTAL\e[0m = \e[${bg_value_color};${text_value_color}m$total GB\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mRAM_USED\e[0m = \e[${bg_value_color};${text_value_color}m$used GB\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mRAM_FREE\e[0m = \e[${bg_value_color};${text_value_color}m$free GB\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mSPACE_ROOT\e[0m = \e[${bg_value_color};${text_value_color}m$space_root MB\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mSPACE_ROOT_USED\e[0m = \e[${bg_value_color};${text_value_color}m$space_root_used MB\e[0m"
+    echo -e "\e[${bg_name_color};${text_name_color}mSPACE_ROOT_FREE\e[0m = \e[${bg_value_color};${text_value_color}m$space_root_free MB\e[0m"
+
+}

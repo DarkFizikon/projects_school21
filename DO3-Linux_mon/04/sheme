@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function color_plan {
+    if [ -f "$CONFIG_FILE" ]; then
+        if [ -z "${column1_backgroud+x}" ]; then
+            echo -e "\nColumn 1 background = default ($color_name_bg)"
+        else
+            echo -e "\nColumn 1 background = $bg_name ($color_name_bg)"
+        fi
+
+        if [ -z "${column1_font_color+x}" ]; then
+            echo "Column 1 font color = default ($color_name_text)"
+        else
+            echo "Column 1 font color = $text_name ($color_name_text)"
+        fi
+
+        if [ -z "${column2_background+x}" ]; then
+            echo "Column 2 background = default ($color_value_bg)"
+        else
+            echo "Column 2 background = $bg_value ($color_value_bg)"
+        fi
+
+        if [ -z "${column2_font_color+x}" ]; then
+            echo "Column 2 font color = default ($color_value_text)"
+        else
+            echo "Column 2 font color = $text_value ($color_value_text)"
+        fi
+     else
+         echo -e "\nColumn 1 background = default ($color_name_bg)"
+         echo "Column 1 font color = default ($color_name_text)"
+         echo "Column 2 background = default ($color_value_bg)"
+         echo "Column 2 font color = default ($color_value_text)"
+    fi
+}

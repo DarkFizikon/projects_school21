@@ -1,0 +1,16 @@
+#!/bin/bash
+
+dir=$1
+
+total_folders=$(find "$dir" -type d | wc -l)
+
+function top_folders {
+    count=1
+    find "$dir" -type d -exec du -sh {} \; |
+    sort -hr | head -n5 |
+    while IFS=$'\t' read -r size path; do
+        path="${path%/}"
+        echo "$count - $path/, $size"
+        ((count++))
+    done
+}

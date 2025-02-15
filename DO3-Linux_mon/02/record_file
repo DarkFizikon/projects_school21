@@ -1,0 +1,30 @@
+#!/bin/bash
+
+function record {
+    read -p "Do you want to save this information to a file? (Y/N): " answer
+    if [[ "$answer" == "Y" || "$answer" == "y" ]]; then
+        timestamp=$(date +"%d_%m_%y_%H_%M_%S")
+        filename="${timestamp}.status"
+        cat <<-EOF | sed 's/^[[:space:]]*//' > "$filename"
+            HOSTNAME = $hostname
+            TIMEZONE = $timezone
+            USER = $user
+            OS = $os
+            DATE = $date
+            UPTIME = $uptime
+            UPTIME_SEC = $uptime_sec seconds
+            IP = $ip
+            MASK = $mask
+            GATEWAY = $gateway
+            RAM_TOTAL = $total GB
+            RAM_USED = $used GB
+            RAM_FREE = $free GB
+            SPACE_ROOT = $space_root MB
+            SPACE_ROOT_USED = $space_root_used MB
+            SPACE_ROOT_FREE = $space_root_free MB
+EOF
+        echo "Information saved to $filename"
+    else
+        echo "information not saved!"
+    fi
+}

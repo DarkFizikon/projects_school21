@@ -1,0 +1,23 @@
+#!/bin/bash
+
+function check_parameters {
+    if [ "$#" -ne 4 ]; then
+        echo "Error! You need to pass 4 parameter"
+        echo "Use: $0 <back_name> <text_name> <back_value> <text_value>"
+        exit 1
+    fi
+
+    for parameter in "$@"; do
+        if ! [[ "$parameter" =~ ^[1-6]+$ ]]; then
+            echo "Error! All parameters must be integer numbers from 1 to 6"
+            echo "Please try again!"
+            exit 1
+        fi
+    done
+
+    if [[ $1 == $2 || $3 == $4 ]]; then
+        echo "Error! You should used different parameters for color back and text in names and values"
+        echo "Please try again with different parameters"
+        exit 1
+    fi
+}
